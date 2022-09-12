@@ -1,0 +1,50 @@
+.reel {
+  display: flex;
+  block-size: var(--height, auto);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-color: var(--yellow) var(--black);
+}
+
+.reel::-webkit-scrollbar {
+  block-size: 1rem;
+}
+
+.reel::-webkit-scrollbar-track {
+  background-color: var(--black);
+}
+
+.reel::-webkit-scrollbar-thumb {
+  background-color: var(--black);
+  background-image: linear-gradient(
+    var(--black) 0,
+    var(--black) 0.25rem,
+    var(--yellow) 0.25rem,
+    var(--yellow) 0.75rem,
+    var(--black) 0.75rem
+  );
+}
+
+.reel > * {
+  flex: 0 0 var(--item-width, auto);
+}
+
+.reel > img {
+  block-size: 100%;
+  flex-basis: auto;
+  width: auto;
+}
+
+.reel > * + * {
+  margin-inline-start: var(--space, 1rem);
+}
+
+.reel.overflowing {
+  padding-block-end: var(--space, 1rem);
+}
+
+.reel[data-state="is-hero"] {
+  --space: 2rem;
+  --item-width: 480px;
+  --height: 560px;
+}
