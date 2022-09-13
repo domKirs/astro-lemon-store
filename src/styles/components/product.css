@@ -1,0 +1,43 @@
+.grid-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 15px;
+  row-gap: 40px;
+}
+
+@media (min-width: 767px) {
+  .grid-wrap {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 30px;
+    row-gap: 60px;
+  }
+}
+
+.product.large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.product figure {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  width: 100%;
+}
+
+.product img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 2px solid transparent;
+  border-radius: 35px;
+}
+
+.product:hover img {
+  border-color: var(--black);
+}
+
+.product:hover .product-image {
+  opacity: 0;
+}

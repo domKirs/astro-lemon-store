@@ -1,0 +1,22 @@
+---
+const {
+  HoverPattern, 
+  HoverImage, 
+  Image,
+  Title,
+  Price,
+  Size,
+} = Astro.props;
+---
+
+<div class:list={['product', Size]}>
+  <figure>
+    <img class="product-hover-pattern" src={HoverPattern} alt="">
+    <img class="product-hover-image" src={HoverImage} alt="">
+    <img class="product-image" src={Image} alt="">
+  </figure>
+  <div class="product-info">
+    <span class="product-title">{Title}</span>
+    <span class="product-price">{Price}</span>
+  </div>
+</div>

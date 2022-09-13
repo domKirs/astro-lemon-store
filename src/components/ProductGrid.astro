@@ -1,0 +1,123 @@
+---
+import ProductBlock from "@components/ProductBlock.astro";
+
+const products = [
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'small',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'small',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'small',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'small',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'small',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'small',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'large',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'large',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'small',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'small',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'small',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: 'Rainbow logo tee',
+    price: '$20',
+    size: 'small',
+    urlImage: '//cdn.shopify.com/s/files/1/0576/8364/0503/products/Figma-Store-1096_600x.jpg?v=1636599836',
+    urlHover: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/Rainbow-logo-tee_600x.png?v=1636143026',
+    urlPattern: '//cdn.shopify.com/s/files/1/0576/8364/0503/files/pattern-10_600x.png?v=1636143251',
+  },
+  {
+    title: '',
+    price: '',
+    size: '',
+    urlImage: '',
+    urlHover: '',
+    urlPattern: '',
+  },
+];
+---
+
+<section class="grid-wrap">
+  {products.map((p) => (
+    <ProductBlock 
+      Title={p.title} 
+      Price={p.price} 
+      Size={p.size} 
+      HoverPattern={p.urlPattern}
+      HoverImage={p.urlHover}
+      Image={p.urlImage}
+    />
+  ))}
+</section>
