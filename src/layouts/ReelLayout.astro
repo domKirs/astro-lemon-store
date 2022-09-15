@@ -26,6 +26,25 @@ const { Element, Class, DataState } = Astro.props;
           toggleOverflowClass(entries[0].target);
         }).observe(reel, {childList: true});
       }
+
+      reel.addEventListener('mousedown', (e) => {
+        let left = reel.scrollLeft;
+        let x = e.clientX;
+
+        const onMouseMove = (e) => {
+          const dx = e.clientX - x;
+          reel.scrollLeft = left - dx;
+        };
+
+        const onMouseUp = (_) => {
+          reel.removeEventListener('mousemove', onMouseMove);
+          reel.removeEventListener('mouseup', onMouseUp);
+        };
+        
+        reel.addEventListener('mousemove', onMouseMove);
+        reel.addEventListener('mouseup', onMouseUp);
+      });
+
     }
 
   })();
