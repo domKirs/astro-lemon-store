@@ -2,10 +2,13 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import CutoutCarousel from "@components/CutoutCarousel.astro";
 import ProductGrid from "@components/ProductGrid.astro";
+import Header from "@components/Header.astro";
 ---
 
-
 <BaseLayout>
-	<CutoutCarousel />
-	<ProductGrid />
+	<Header />
+	<main>
+		<CutoutCarousel />
+		<ProductGrid />
+	</main>
 </BaseLayout>

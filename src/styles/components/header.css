@@ -1,0 +1,29 @@
+header {
+  --transition-bg-c: background-color 0.4s ease;
+  --transition-transform: transform 0.6s ease;
+}
+
+header {
+  padding-block: 16px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 666;
+  background-color: transparent;
+  transition: var(--transition-bg-c), var(--transition-transform);
+}
+
+header p {
+  color: lightsalmon;
+  margin-inline: auto;
+  max-width: 33ch;
+  text-align: center;
+}
+
+header.is-hidden {
+  transform: translateY(-100%);
+}
+
+header.is-active {
+  background-color: var(--white);
+}
