@@ -33,18 +33,20 @@
     }
 
     _onScroll() {
-      if(window.scrollY === 0) {
+      const windowScrollY = window.scrollY;
+      
+      if (windowScrollY === 0) {
         this.classList.remove('is-active');
         return;
       }
 
       this.classList.add('is-active');
 
-      window.scrollY > this.lastKnownScrollPosition
+      windowScrollY > this.lastKnownScrollPosition
       ? this.classList.add('is-hidden')
       : this.classList.remove('is-hidden');
 
-      this.lastKnownScrollPosition = window.scrollY;
+      this.lastKnownScrollPosition = windowScrollY;
     }
   }
 
