@@ -1,0 +1,52 @@
+---
+
+---
+
+<header-drawer>
+  <header>
+    <p>The Lemon store</p>
+  </header>
+</header-drawer>
+
+<script>
+
+  class HeaderDrawer extends HTMLElement {
+    constructor() {
+      super();
+      this._lastKnownScrollPosition = 0;
+    }
+
+    set lastKnownScrollPosition(val) {
+      this._lastKnownScrollPosition = val;
+    }
+
+    get lastKnownScrollPosition() {
+      return this._lastKnownScrollPosition;
+    }
+
+    connectedCallback() {
+      document.addEventListener('scroll', this._onScroll.bind(this));
+    }
+
+    disconnectedCallback() {
+      document.removeEventListener('scroll', this._onScroll.bind(this));
+    }
+
+    _onScroll() {
+      if(window.scrollY === 0) {
+        this.classList.remove('is-active');
+        return;
+      }
+
+      this.classList.add('is-active');
+
+      window.scrollY > this.lastKnownScrollPosition
+      ? this.classList.add('is-hidden')
+      : this.classList.remove('is-hidden');
+
+      this.lastKnownScrollPosition = window.scrollY;
+    }
+  }
+
+  customElements.define('header-drawer', HeaderDrawer);
+</script>
