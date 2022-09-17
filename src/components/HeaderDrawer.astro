@@ -16,13 +16,14 @@
       this._lastKnownScrollPosition = 0;
     }
 
+    get lastKnownScrollPosition() {
+      return this._lastKnownScrollPosition;
+    }
+    
     set lastKnownScrollPosition(val) {
       this._lastKnownScrollPosition = val;
     }
 
-    get lastKnownScrollPosition() {
-      return this._lastKnownScrollPosition;
-    }
 
     connectedCallback() {
       document.addEventListener('scroll', this._onScroll.bind(this));

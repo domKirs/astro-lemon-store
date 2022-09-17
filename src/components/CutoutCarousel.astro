@@ -1,6 +1,6 @@
 ---
-import ReelLayout from "@layouts/ReelLayout.astro";
 import CutoutImage from "@components/CutoutImage.astro";
+import LayoutReel from "@layouts/LayoutReel.astro";
 
 const cutouts = [
   {
@@ -41,11 +41,11 @@ const cutouts = [
 ];
 ---
 
-<ReelLayout Element="section" Class="bg-yellow" DataState="is-hero">
+<LayoutReel class="bg-yellow is-hero">
   {cutouts.map((cutout) => (
     <CutoutImage id={cutout.id} href={cutout.href} d={cutout.d} />
   ))}
-</ReelLayout>
+</LayoutReel>
 
 
 

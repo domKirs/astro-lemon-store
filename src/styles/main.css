@@ -1,7 +1,7 @@
 @import "./reset/reset.css";
 @import "./variables/root.css";
-@import "./layout/reel.css";
+@import "./layout/l-reel.css";
 @import "./utilities/utilities.css";
 @import "./components/cutout.css";
 @import "./components/product.css";
-@import "./components/header.css";
+@import "./components/header-drawer.css";

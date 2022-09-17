@@ -1,0 +1,73 @@
+---
+const { class: classList, ...attrs } = Astro.props;
+---
+
+<l-reel class:list={["l-reel", classList]} {...attrs} >
+  <slot />
+</l-reel>
+
+<script>
+  class Reel extends HTMLElement {
+    constructor() {
+      super();
+      this._mouseIsDown = false;
+      this._mouseDownX = 0;
+      this._mouseDownScrollLeft = 0;
+      this.addEventListener('mousedown', this._onMouseDown.bind(this));
+      this.addEventListener('mousemove', this._onMouseMove.bind(this));
+      this.addEventListener('mouseup', this._onMouseUp.bind(this));
+    }
+
+    get mouseIsDown() {
+      return this._mouseIsDown;
+    }
+
+    set mouseIsDown(val) {
+      this._mouseIsDown = val;
+    }
+
+    get mouseDownX() {
+      return this._mouseDownX;
+    }
+
+    set mouseDownX(val) {
+      this._mouseDownX = val;
+    }
+
+    get mouseDownScrollLeft() {
+      return this._mouseDownScrollLeft;
+    }
+
+    set mouseDownScrollLeft(val) {
+      this._mouseDownScrollLeft = val;
+    }
+
+    _onMouseDown(event) {
+      this.mouseIsDown = true;
+      this.mouseDownX = event.clientX;
+      this.mouseDownScrollLeft = this.scrollLeft;
+    }
+
+    _onMouseMove(event) {
+      if (this.mouseIsDown === false) return;
+      const dx = event.clientX - this.mouseDownX;
+      this.scrollLeft = this.mouseDownScrollLeft - dx;
+    }
+
+    _onMouseUp() {
+      this.mouseIsDown = false;
+    }
+
+    _toggleOverflowClass() {
+      this.classList.toggle('overflowing', this.scrollWidth > this.clientWidth);
+    }
+
+    connectedCallback() {
+      new ResizeObserver(this._toggleOverflowClass.bind(this)).observe(this);
+      new MutationObserver(this._toggleOverflowClass.bind(this)).observe(this, { childList: true });
+    }
+  }
+
+  customElements.define('l-reel', Reel);
+</script>
+
