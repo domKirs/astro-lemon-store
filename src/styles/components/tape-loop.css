@@ -12,14 +12,15 @@ tape-loop {
   text-transform: uppercase;
 }
 
-tape-loop .tape {
-  --gap: 8px;
-  animation: marquee 15s linear infinite;
+tape-element {
+  animation: marquee 8s linear infinite;
   display: flex;
   align-items: center;
-  column-gap: var(--gap);
-  margin-inline: calc(var(--gap) * 1 / 2);
   white-space: nowrap;
+}
+
+tape-element svg {
+  margin-inline: 8px;
 }
 
 @keyframes marquee {
