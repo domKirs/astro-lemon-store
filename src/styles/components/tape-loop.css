@@ -1,0 +1,30 @@
+tape-loop {
+  max-width: 100vw;
+  display: flex;
+  overflow-x: hidden;
+  padding-block: 8px;
+}
+
+tape-loop {
+  font-size: 1.625rem;
+  font-weight: 700;
+  line-height: 1.23;
+  text-transform: uppercase;
+}
+
+tape-loop .tape {
+  animation: marquee 15s linear infinite;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

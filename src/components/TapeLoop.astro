@@ -1,0 +1,49 @@
+---
+import Tape from "./Tape.astro";
+
+const { class: classList, ...attr } = Astro.props;
+---
+
+<tape-loop class:list={[classList]} {...attr}>
+  <Tape />
+  <Tape />
+</tape-loop>
+
+<script>
+  class TapeLoop extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    get tape() {
+      return this.querySelector(".tape");
+    }
+
+    get colors() {
+      return ["red", "green", "yellow", "purple"];
+    }
+
+    _removeOldBackgroundColor() {
+      const tobeRemoved = [];
+      this.classList.forEach((e) => e.includes("bg-") && tobeRemoved.push(e));
+      tobeRemoved.forEach((e) => this.classList.remove(e));
+    }
+
+    _changeBackgroundColor(entries) {
+      if (entries[0].isIntersecting) return;
+      this._removeOldBackgroundColor();
+      const randomIndex = Math.floor(Math.random() * this.colors.length);
+      const randomColor = this.colors[randomIndex];
+      this.classList.add(`bg-${randomColor}`);
+    }
+
+    connectedCallback() {
+      const observer = new IntersectionObserver(
+        this._changeBackgroundColor.bind(this)
+      );
+      observer.observe(this);
+    }
+  }
+
+  customElements.define("tape-loop", TapeLoop);
+</script>
