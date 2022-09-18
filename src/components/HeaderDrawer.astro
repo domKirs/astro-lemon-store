@@ -1,15 +1,15 @@
 ---
-
 ---
 
 <header-drawer>
-  <header>
-    <p>The Lemon store</p>
-  </header>
+  <color-changer class="bg-yellow">
+    <header>
+      <p>The Lemon store</p>
+    </header>
+  </color-changer>
 </header-drawer>
 
 <script>
-
   class HeaderDrawer extends HTMLElement {
     constructor() {
       super();
@@ -19,37 +19,29 @@
     get lastKnownScrollPosition() {
       return this._lastKnownScrollPosition;
     }
-    
+
     set lastKnownScrollPosition(val) {
       this._lastKnownScrollPosition = val;
     }
 
-
     connectedCallback() {
-      document.addEventListener('scroll', this._onScroll.bind(this));
+      document.addEventListener("scroll", this._onScroll.bind(this));
     }
 
     disconnectedCallback() {
-      document.removeEventListener('scroll', this._onScroll.bind(this));
+      document.removeEventListener("scroll", this._onScroll.bind(this));
     }
 
     _onScroll() {
       const windowScrollY = window.scrollY;
-      
-      if (windowScrollY === 0) {
-        this.classList.remove('is-active');
-        return;
-      }
-
-      this.classList.add('is-active');
 
       windowScrollY > this.lastKnownScrollPosition
-      ? this.classList.add('is-hidden')
-      : this.classList.remove('is-hidden');
+        ? this.classList.add("is-hidden")
+        : this.classList.remove("is-hidden");
 
       this.lastKnownScrollPosition = windowScrollY;
     }
   }
 
-  customElements.define('header-drawer', HeaderDrawer);
+  customElements.define("header-drawer", HeaderDrawer);
 </script>

@@ -13,10 +13,12 @@ tape-loop {
 }
 
 tape-loop .tape {
+  --gap: 8px;
   animation: marquee 15s linear infinite;
   display: flex;
   align-items: center;
-  column-gap: 8px;
+  column-gap: var(--gap);
+  margin-inline: calc(var(--gap) * 1 / 2);
   white-space: nowrap;
 }
 

@@ -1,0 +1,43 @@
+---
+const { class: classList, ...attr } = Astro.props;
+---
+
+<color-changer class:list={[classList]} {...attr}>
+  <slot />
+</color-changer>
+
+<script>
+  class ColorChanger extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    get colors() {
+      return ["red", "green", "yellow", "purple"];
+    }
+
+    _removeOldBackgroundColor() {
+      const tobeRemoved = [];
+      this.classList.forEach((e) => e.includes("bg-") && tobeRemoved.push(e));
+      tobeRemoved.forEach((e) => this.classList.remove(e));
+    }
+
+    _changeBackgroundColor(entries) {
+      if (entries[0].isIntersecting) return;
+      this._removeOldBackgroundColor();
+      const randomIndex = Math.floor(Math.random() * this.colors.length);
+      const randomColor = this.colors[randomIndex];
+      this.classList.add(`bg-${randomColor}`);
+    }
+
+    connectedCallback() {
+      const observer = new IntersectionObserver(
+        this._changeBackgroundColor.bind(this),
+        { threshold: 0.01 }
+      );
+      observer.observe(this);
+    }
+  }
+
+  customElements.define("color-changer", ColorChanger);
+</script>

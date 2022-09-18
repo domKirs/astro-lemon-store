@@ -4,6 +4,7 @@ import HeaderDrawer from "@components/HeaderDrawer.astro";
 import CutoutCarousel from "@components/CutoutCarousel.astro";
 import ProductGrid from "@components/ProductGrid.astro";
 import TapeLoop from "@components/TapeLoop.astro";
+import ColorChanger from "@components/ColorChanger.astro";
 ---
 
 <BaseLayout>
@@ -13,6 +14,8 @@ import TapeLoop from "@components/TapeLoop.astro";
     <ProductGrid />
   </main>
   <footer>
-    <TapeLoop class="bg-purple" />
+    <ColorChanger class="bg-purple">
+      <TapeLoop />
+    </ColorChanger>
   </footer>
 </BaseLayout>
