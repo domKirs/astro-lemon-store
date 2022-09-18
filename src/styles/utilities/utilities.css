@@ -1,25 +1,31 @@
 .bg-black {
-  background-color: var(--black);
+  --bg-c: var(--black);
+  background-color: var(--bg-c);
 }
 
 .bg-white {
+  --bg-c: var(--white);
   background-color: var(--white);
 }
 
 .bg-red {
-  background-color: var(--red);
+  --bg-c: var(--red);
+  background-color: var(--bg-c);
 }
 
 .bg-green {
-  background-color: var(--green);
+  --bg-c: var(--green);
+  background-color: var(--bg-c);
 }
 
 .bg-yellow {
-  background-color: var(--yellow);
+  --bg-c: var(--yellow);
+  background-color: var(--bg-c);
 }
 
 .bg-purple {
-  background-color: var(--purple);
+  --bg-c: var(--purple);
+  background-color: var(--bg-c);
 }
 
 .bg-max {
