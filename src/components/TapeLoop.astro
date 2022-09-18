@@ -2,8 +2,8 @@
 const { class: classList, ...attr } = Astro.props;
 ---
 
-<tape-loop class:list={[classList]} {...attr}>
-  <tape-element>
+<tape-loop class:list={['is-animated', classList]} {...attr}>
+  <tape-element >
     <span class="word">Easy</span>
 
     <svg
@@ -79,14 +79,39 @@ const { class: classList, ...attr } = Astro.props;
   class TapeLoop extends HTMLElement {
     constructor() {
       super();
+      this._biggestInnerWidth = 0;
+    }
+
+    get biggestInnerWidth() {
+      return this._biggestInnerWidth;
+    }
+
+    set biggestInnerWidth(val) {
+      this._biggestInnerWidth = val;
     }
 
     get tapeElement() {
       return this.querySelector("tape-element");
     }
 
+    get tapeElements() {
+      return this.querySelectorAll("tape-element");
+    }
+
     get tapeElementScrollWidth() {
       return this.tapeElement.scrollWidth;
+    }
+
+    get windowInnerWidth() {
+      return window.innerWidth;
+    }
+
+    get numberOfAdditionalTapes() {
+      return Math.ceil(this.windowInnerWidth / this.tapeElementScrollWidth);
+    }
+
+    _toggleIsAnimated() {
+      this.classList.toggle('is-animated');
     }
 
     _appendTapeElement() {
@@ -95,16 +120,36 @@ const { class: classList, ...attr } = Astro.props;
       this.appendChild(tapeElement);
     }
 
-    connectedCallback() {
-      const windowInnerWidth = window.innerWidth;
-      const appendCount =
-        this.tapeElementScrollWidth > windowInnerWidth
-          ? 1
-          : Math.ceil(windowInnerWidth / this.tapeElementScrollWidth);
+    _onResize() {
+      if (this.biggestInnerWidth >= this.windowInnerWidth) return;
+      this.biggestInnerWidth = this.windowInnerWidth;
+      
+      this._toggleIsAnimated();
 
-      for (let i = 1; i <= appendCount; i++) {
+      const numberOfAdditionalTapes = this.numberOfAdditionalTapes;
+      const currentNumberOfTapes = this.tapeElements.length;
+      const sub = numberOfAdditionalTapes - currentNumberOfTapes + 1;
+
+      for (let i = 1; i <= sub; i++) {
         this._appendTapeElement();
       }
+
+    }
+
+    _onMutation() {
+      this._toggleIsAnimated();
+    }
+
+    connectedCallback() {
+      this.biggestInnerWidth = this.windowInnerWidth;
+      const numberOfAdditionalTapes = this.numberOfAdditionalTapes;
+
+      for (let i = 1; i <= numberOfAdditionalTapes; i++) {
+        this._appendTapeElement();
+      }
+
+      new ResizeObserver(this._onResize.bind(this)).observe(this);
+      new MutationObserver(this._onMutation.bind(this)).observe(this, {childList: true});
     }
   }
   customElements.define("tape-loop", TapeLoop);

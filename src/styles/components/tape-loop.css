@@ -13,10 +13,17 @@ tape-loop {
 }
 
 tape-element {
-  animation: marquee 8s linear infinite;
   display: flex;
   align-items: center;
   white-space: nowrap;
+}
+
+tape-loop.is-animated tape-element {
+  animation: marquee 8s linear infinite;
+}
+
+tape-loop:hover tape-element {
+  animation-play-state: paused;
 }
 
 tape-element svg {
