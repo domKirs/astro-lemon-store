@@ -51,7 +51,7 @@
   padding-block-end: var(--space, 1rem);
 }
 
-.l-reel.is-hero {
+.hero .l-reel {
   --track-color: var(--black);
   --thumb-color: var(--yellow);
   --space: 2rem;

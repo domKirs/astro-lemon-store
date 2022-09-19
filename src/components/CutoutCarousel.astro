@@ -41,11 +41,13 @@ const cutouts = [
 ];
 ---
 
-<LayoutReel class="bg-yellow is-hero">
-  {cutouts.map((cutout) => (
-    <CutoutImage id={cutout.id} href={cutout.href} d={cutout.d} />
-  ))}
-</LayoutReel>
+<section class="hero bg-yellow">
+  <LayoutReel>
+    {cutouts.map((cutout) => (
+      <CutoutImage id={cutout.id} href={cutout.href} d={cutout.d} />
+    ))}
+  </LayoutReel>
+</section>
 
 
 

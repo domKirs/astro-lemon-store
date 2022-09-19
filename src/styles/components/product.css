@@ -1,18 +1,3 @@
-.grid-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 15px;
-  row-gap: 40px;
-}
-
-@media (min-width: 767px) {
-  .grid-wrap {
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 30px;
-    row-gap: 60px;
-  }
-}
-
 .product.large {
   grid-column: span 2;
   grid-row: span 2;

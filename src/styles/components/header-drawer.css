@@ -13,14 +13,3 @@ header-drawer {
 header-drawer.is-hidden {
   transform: translateY(-100%);
 }
-
-header {
-  padding-block: 16px;
-}
-
-header p {
-  color: lightsalmon;
-  margin-inline: auto;
-  max-width: 33ch;
-  text-align: center;
-}
